@@ -3,30 +3,25 @@ import React, { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import SearchIcon from '@mui/icons-material/Search';
-import IconButton from '@mui/material/IconButton';
 import axios from 'axios';
 
-type UrlProps = {
+type SearchProps = {
   cod: number;
   link: string;
-  descr_nome: string;
+  descr_nome: string; 
 };
 
-type AxiosProps = {
-  apiBaseUrl: string;
-};
 
-const AxiosSearch: React.FC<AxiosProps> = ({ apiBaseUrl }) => {
+const AsyncSearch: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [searchResults, setSearchResults] = useState<UrlProps[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchProps[]>([]);
 
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTerm = event.target.value;
     setSearchTerm(newTerm);
 
     try {
-      const response = await axios.get<UrlProps[]>(`${apiBaseUrl}/${newTerm}`);
+      const response = await axios.get<SearchProps[]>(`https://transparencia.apps.tcu.gov.br/rest/transparencia/servicoPorKeyword/${newTerm}`);
       setSearchResults(response.data.sort((a, b) => a.descr_nome.localeCompare(b.descr_nome)));
     } catch (error) {
       console.error('Erro na busca:', error);
@@ -35,9 +30,14 @@ const AxiosSearch: React.FC<AxiosProps> = ({ apiBaseUrl }) => {
 
   return (
     <>
-      <h1>Axios</h1>
-      <Stack sx={{ width: 300 }}>
-        <Autocomplete
+      <Stack >
+        {/* <Autocomplete
+          id="live-search-demo"
+          options={searchResults}
+          getOptionLabel={(option) => `Codigo: ${option.cod} Link: ${option.link}`}
+          renderInput={(params) => <TextField {...params} label="Procure por um serviço" onChange={handleInputChange} />}
+        /> */}
+          <Autocomplete
           id="live-search-demo"
           options={searchResults}
           getOptionLabel={(option) => option.descr_nome}
@@ -48,21 +48,12 @@ const AxiosSearch: React.FC<AxiosProps> = ({ apiBaseUrl }) => {
               </a>
             </div>
           )}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Procure por um serviço"
-              onChange={handleInputChange}
-            />
-          )}
+          renderInput={(params) => <TextField {...params} label="Encontre o que procura" onChange={handleInputChange} />}
           noOptionsText="Nenhum resultado encontrado."
         />
-        <IconButton sx={{ width: 40 }}>
-          <SearchIcon />
-        </IconButton>
       </Stack>
     </>
   );
 };
 
-export default AxiosSearch;
+export default AsyncSearch;

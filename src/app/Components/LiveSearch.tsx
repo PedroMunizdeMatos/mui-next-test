@@ -9,7 +9,7 @@ const LiveSearch = () => {
   const [jsonResults, setJsonResults] = useState([]);
 
   useEffect(() => {
-    fetch("https://www.balldontlie.io/api/v1/players").then((response) => response.json()).then((json) => setJsonResults(json.data));
+    fetch(`https://transparencia.apps.tcu.gov.br/rest/transparencia/servicoPorKeyword/`).then((response) => response.json()).then((json) => setJsonResults(json.data));
   }, []);
 
 
@@ -18,19 +18,22 @@ const LiveSearch = () => {
       <Stack sx={{width: 300}}>
         <Autocomplete 
         id="live-search-demo"
-        getOptionLabel={(jsonResults) => `${jsonResults.first_name} ${jsonResults.last_name}`}
+        getOptionLabel={(jsonResults) => `${jsonResults.firstItem} ${jsonResults.lastItem}`}
         options={jsonResults}
-        isOptionEqualToValue={(option, value) => option.first_name === value.first_name}
+        isOptionEqualToValue={(option, value) => option.firstItem === value.firstItem}
         noOptionsText="Não encontrado."
         renderOption={(props, jsonResults) => (
           <Box component="li" {...props} key={jsonResults.id}>
-            {jsonResults.first_name} {jsonResults.last_name}
+            {jsonResults.firstItem} {jsonResults.lastItem}
           </Box>
         )}
          renderInput={(params) => <TextField {...params}
           label="Procure por um serviço"
           />}
         />
+        <IconButton sx={{width:40}}>
+          <SearchIcon></SearchIcon>
+        </IconButton>
       </Stack>
     </>
   )
