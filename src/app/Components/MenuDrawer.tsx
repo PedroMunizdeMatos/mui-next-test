@@ -107,7 +107,7 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose }) => {
                 <ListItemText primary="Sub-opção 4" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary="Sub-opção 5" />
+                <ListItemText primary="Sub-opção 5x" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemText primary="Sub-opção 6" />
