@@ -19,13 +19,13 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose }) => {
   const [openedSubOption, setOpenedSubOption] = useState<string | null>(null);
 
   return (
-    <Drawer anchor="right" open={open} onClose={onClose}>
+    <Drawer anchor="right" open={open} onClose={onClose} className='text-center'>
       <div className="flex justify-end p-4">
         <IconButton onClick={onClose}>
           <CloseIcon />
         </IconButton>
       </div>
-      <div className="px-10 py-4">
+      <div className=" py-4">
         <List component="div" disablePadding>
           <ListItemButton
             onClick={() =>
@@ -42,7 +42,105 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose }) => {
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemText primary="Sub-opção 2" />
               </ListItemButton>
-              {/* Adicione mais sub-opções conforme necessário */}
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 3" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 4" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 5" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 6" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          <ListItemButton
+            onClick={() =>
+              setOpenedSubOption(openedSubOption === 'areasAtuacao' ? null : 'areasAtuacao')
+            }
+          >
+            <ListItemText primary="Áreas de Atuação" />
+          </ListItemButton>
+          <Collapse in={openedSubOption === 'areasAtuacao'} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 1" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 2" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 3" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 4" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 5" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 6" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          <ListItemButton
+            onClick={() =>
+              setOpenedSubOption(openedSubOption === 'tcuCongresso' ? null : 'tcuCongresso')
+            }
+          >
+            <ListItemText primary="Tcu e Congresso" />
+          </ListItemButton>
+          <Collapse in={openedSubOption === 'tcuCongresso'} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 1" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 2" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 3" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 4" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 5" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 6" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          <ListItemButton
+            onClick={() =>
+              setOpenedSubOption(openedSubOption === 'sobreTcu' ? null : 'sobreTcu')
+            }
+          >
+            <ListItemText primary="Sobre o TCU" />
+          </ListItemButton>
+          <Collapse in={openedSubOption === 'sobreTcu'} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 1" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 2" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 3" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 4" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 5" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemText primary="Sub-opção 6" />
+              </ListItemButton>
             </List>
           </Collapse>
         </List>
