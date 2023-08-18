@@ -1,21 +1,11 @@
+import LanguageSelector from "./Components/LanguageSelector";
+import Navbar from "./Components/Navbar";
 
-import AsynchronousSearch from "./Components/IntegratedSearch";
-import LiveSearch from "./Components/LiveSearch";
-import Dashboard from "./dashboard/page";
-import Login from "./login/page";
-import AxiosSearch from "./search/page";
-import Search from "./search/page";
-import AsyncSearch from "./searchTest/page";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <Dashboard></Dashboard>
-        <Login></Login>
-        <AxiosSearch apiBaseUrl="https://transparencia.apps.tcu.gov.br/rest/transparencia/servicoPorKeyword/contas" />
-        <LiveSearch/>
-        <AsynchronousSearch></AsynchronousSearch>
-        <AsyncSearch></AsyncSearch>
+      <Navbar/>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
       </div>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">

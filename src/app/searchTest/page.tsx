@@ -30,15 +30,9 @@ const AsyncSearch: React.FC = () => {
 
   return (
     <>
-      <Stack >
-        {/* <Autocomplete
-          id="live-search-demo"
-          options={searchResults}
-          getOptionLabel={(option) => `Codigo: ${option.cod} Link: ${option.link}`}
-          renderInput={(params) => <TextField {...params} label="Procure por um serviço" onChange={handleInputChange} />}
-        /> */}
+      <Stack sx={{width:600}}>
           <Autocomplete
-          id="live-search-demo"
+          id="live-search"
           options={searchResults}
           getOptionLabel={(option) => option.descr_nome}
           renderOption={(props, option) => (
